@@ -1,5 +1,5 @@
 import Document from "flareact/document";
-import { ServerStyleSheet } from "styled-components";
+import { ServerStyleSheet } from '@xstyled/styled-components';
 
 export default class MyDocument extends Document {
   static async getEdgeProps(ctx) {

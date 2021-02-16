@@ -5,7 +5,14 @@ export async function getEdgeProps({ params, event }) {
   console.log("data called", data);
   console.log("server", bio);
   // return event.respondWith(handleRequest());
-  return Response.redirect('https://cool.bio')
+  if(!data) {
+    return {
+      redirect: {
+        destination: 'https://cool.bio',
+        permanent: false,
+      },
+    }
+  }
   return {
     props: {
       bio,
@@ -16,6 +23,6 @@ export async function getEdgeProps({ params, event }) {
 }
 
 export default function Post({ bio, data, event }) {
-  console.log("slugslug", bio, data, event);
-  return <div>I'm the {bio}</div>;
+  console.log("slug slug", bio, data, event);
+  return <div>I'm the new {bio}</div>;
 }

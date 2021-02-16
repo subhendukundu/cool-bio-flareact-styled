@@ -11,9 +11,12 @@
     "deploy": "flareact publish"
   },
   "dependencies": {
-    "flareact": "1.1.1-canary.1",
+    "@xstyled/styled-components": "^2.2.3",
+    "babel-plugin-inline-react-svg": "^1.1.2",
+    "flareact": "^1.1.0",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
+    "react-use": "^17.1.1",
     "styled-components": "^5.2.1"
   }
 }
