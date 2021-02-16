@@ -1,8 +1,8 @@
 {
-  "name": "flareact-template",
+  "name": "cool.bio",
   "version": "1.0.0",
-  "author": "Josh Larson <jplhomer@gmail.com>",
-  "license": "MIT",
+  "author": "Subhendu Kundu <subhendukundu14@gmail.com>",
+  "description": "Showcase flareact on cool.bio",
   "main": "index.js",
   "private": true,
   "scripts": {
