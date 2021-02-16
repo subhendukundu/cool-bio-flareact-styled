@@ -121,7 +121,7 @@ const Footer = () => {
           return (
             <x.div
               key={key}
-              pr={{ xs: 2, md: 3 }}
+              p={{ xs: 2, md: 3 }}
               as="a"
               href={link}
               aria-label={key}

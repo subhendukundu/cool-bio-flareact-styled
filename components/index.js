@@ -5,6 +5,7 @@ export { default as Input } from "./Input";
 export { default as LazyImage } from "./LazyImage";
 export { default as Link } from "./Link";
 export { default as Nav } from "./Nav";
+export { default as Seo } from "./Seo";
 export { default as SSROnly } from "./SSROnly";
 export { default as Text } from "./Text";
 export { default as TopBar } from "./TopBar";

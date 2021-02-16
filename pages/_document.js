@@ -1,4 +1,4 @@
-import Document from "flareact/document";
+import Document, { Html, Head, Main, FlareactScript } from "flareact/document";
 import { ServerStyleSheet } from '@xstyled/styled-components';
 
 export default class MyDocument extends Document {
@@ -26,5 +26,16 @@ export default class MyDocument extends Document {
     } finally {
       sheet.seal();
     }
+  }
+  render() {
+    return (
+      <Html lang="en">
+        <Head />
+        <body>
+          <Main />
+          <FlareactScript />
+        </body>
+      </Html>
+    );
   }
 }

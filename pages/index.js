@@ -8,8 +8,10 @@ import {
   Text,
   Button,
   Footer,
+  Seo,
 } from "../components";
 import { landingData } from "../configs/landing";
+import seoData from '../flareact-seo.config';
 
 const Section = styled.div`
   display: flex;
@@ -33,6 +35,11 @@ const Section = styled.div`
 export default function Home() {
   return (
     <>
+      <Seo
+        description={seoData.description}
+        title={seoData.title}
+        image={seoData.openGraph.image.url}
+      />
       <TopBar />
       <x.div maxWidth="1200px" m="0 auto" mt={8}>
         <Nav />
@@ -48,7 +55,7 @@ export default function Home() {
           Be Cool! Earn With cool.bio
         </Heading>
         <x.div m="0 auto" mt={{ md: -4, xs: -3 }} w={{ md: "80%", xs: "auto" }}>
-          <LazyImage src="assets/hero.svg" />
+          <LazyImage src="assets/hero.svg" alt="cool.bio hero" />
         </x.div>
         <x.div px={{ md: 12, xs: 6 }} m="0 auto">
           {landingData.map((item) => {
