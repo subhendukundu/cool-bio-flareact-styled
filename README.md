@@ -1,4 +1,6 @@
-# Flareact Template
+# cool.bio
+
+Inspired from https://static-tweet.vercel.app/
 
 Get started with Flareact by installing [Wrangler](https://github.com/cloudflare/wrangler) and running:
 
