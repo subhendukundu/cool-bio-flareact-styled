@@ -1,0 +1,6 @@
+Sitemap: https://cool.bio/api/sitemap
+
+User-agent: *
+Allow: /*
+
+Disallow: /api/*

@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import React, { useState, useEffect, useRef } from "react";
 import { x } from "@xstyled/styled-components";
 
-function LazyImage({ height, width, src, alt }) {
+function LazyImage({ height, width = "100%", src, alt, ...rest }) {
   const [loaded, setLoaded] = useState(false);
   const imgRef = useRef();
   useEffect(() => {
@@ -11,18 +11,18 @@ function LazyImage({ height, width, src, alt }) {
     }
   }, []);
   return (
-    <x.div h={height} w={width}>
-      <x.img
-        loading="lazy"
-        src={src}
-        alt={alt}
-        ref={imgRef}
-        onLoad={() => setLoaded(true)}
-        transition="opacity 1s"
-        opacity={loaded ? 1 : 0}
-        w="100%"
-      />
-    </x.div>
+    <x.img
+      loading="lazy"
+      src={src}
+      alt={alt}
+      ref={imgRef}
+      onLoad={() => setLoaded(true)}
+      transition="opacity 1s"
+      opacity={loaded ? 1 : 0}
+      h={height}
+      w={width}
+      {...rest}
+    />
   );
 }
 

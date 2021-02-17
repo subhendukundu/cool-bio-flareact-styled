@@ -1,15 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
-import NextLink from "flareact/link";
 import { x } from "@xstyled/styled-components";
 
 function Link({ color = "#F87E0F", children, href = "#", ...rest }) {
   return (
-    <NextLink href={href}>
-      <x.a color={color} {...rest} rel="noopener">
-          {children}
-      </x.a>
-    </NextLink>
+    <x.a
+      color={color}
+      {...rest}
+      rel="noopener"
+      href={href}
+      textDecoration="none"
+    >
+      {children}
+    </x.a>
   );
 }
 

@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useRouter } from "flareact/router";
 import Head from "flareact/head";
 
@@ -38,7 +39,14 @@ export default function Seo({ title, description, image }) {
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_US" />
         <meta property="og:site_name" content="cool.bio" />
+        <link rel="canonical" href={`https://cool.bio${router.asPath}`} />
       </Head>
     </>
   );
+}
+
+Seo.propTypes = {
+  description: PropTypes.string,
+  image: PropTypes.string,
+  title: PropTypes.string
 }

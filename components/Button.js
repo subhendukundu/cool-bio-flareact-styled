@@ -7,8 +7,8 @@ function Button(props) {
     as = "button",
     variant = "solid",
     size = "lg",
-    backgroundColor = "#F87E0F",
-    color = "#ffffff",
+    backgroundColor = "rgb(255, 255, 255)",
+    color = "rgb(107, 33, 168)",
     children,
     display = "inline-flex",
     loading,
@@ -18,6 +18,7 @@ function Button(props) {
     <x.button
       display={display}
       alignItems="center"
+      justifyContent="center"
       position="relative"
       padding="0.5rem 1rem"
       border="1px solid rgb(192, 132, 252)"
@@ -25,8 +26,8 @@ function Button(props) {
       lineHeight="1.5rem"
       fontWeight="500"
       borderRadius="0.375rem"
-      color="rgb(107, 33, 168)"
-      backgroundColor="rgb(255, 255, 255)"
+      color={color}
+      backgroundColor={backgroundColor}
       textDecoration="none"
       as={as}
       {...rest}
