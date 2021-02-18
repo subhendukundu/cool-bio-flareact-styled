@@ -1,4 +1,4 @@
-import { handleEvent } from "flareact";
+import { handleEvent } from 'flareact'
 
 /**
  * The DEBUG flag will do two things that help during development:
@@ -7,21 +7,21 @@ import { handleEvent } from "flareact";
  * 2. we will return an error message on exception in your Response rather
  *    than the default 404.html page.
  */
-const DEBUG = false;
+const DEBUG = false
 
-addEventListener("fetch", (event) => {
+addEventListener('fetch', (event) => {
   try {
     event.respondWith(
-      handleEvent(event, require.context("./pages/", true, /\.(js|jsx|ts|tsx)$/), DEBUG)
-    );
+      handleEvent(event, require.context('./pages/', true, /\.(js|jsx|ts|tsx)$/), DEBUG)
+    )
   } catch (e) {
     if (DEBUG) {
       return event.respondWith(
         new Response(e.message || e.toString(), {
-          status: 500,
+          status: 500
         })
-      );
+      )
     }
-    event.respondWith(new Response("Internal Error", { status: 500 }));
+    event.respondWith(new Response('Internal Error', { status: 500 }))
   }
-});
+})

@@ -128,7 +128,6 @@ export default function Post({ bio, data, event }) {
           <Button
             href={`/${userName}/booking`}
             as="a"
-            target="_newtab"
             mt={6}
             variant="outline"
             color="#fff"

@@ -8,18 +8,35 @@
   "scripts": {
     "dev": "flareact dev",
     "build": "flareact build",
-    "deploy": "flareact publish"
+    "deploy": "flareact publish",
+    "lint-fix": "eslint components/**/*.js pages/**/*.js --fix"
   },
   "dependencies": {
+    "@datepicker-react/styled": "^2.8.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.34",
     "@fortawesome/free-brands-svg-icons": "^5.15.2",
     "@fortawesome/react-fontawesome": "^0.1.14",
+    "@hookform/error-message": "^0.0.5",
     "@xstyled/styled-components": "^2.2.3",
     "babel-plugin-inline-react-svg": "^1.1.2",
+    "dayjs": "^1.10.4",
     "flareact": "^1.1.0",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
+    "react-google-recaptcha-v3": "^1.8.0",
+    "react-hook-form": "^6.15.1",
+    "react-select": "^4.1.0",
     "react-use": "^17.1.1",
     "styled-components": "^5.2.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.20.0",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-promise": "^4.3.1",
+    "eslint-plugin-react": "^7.22.0"
   }
 }

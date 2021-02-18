@@ -1,19 +1,17 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { x } from "@xstyled/styled-components";
+import React from 'react'
+import PropTypes from 'prop-types'
+import { x } from '@xstyled/styled-components'
 
-function Button(props) {
+function Button (props) {
   const {
-    as = "button",
-    variant = "solid",
-    size = "lg",
-    backgroundColor = "rgb(255, 255, 255)",
-    color = "rgb(107, 33, 168)",
+    as = 'button',
+    backgroundColor = 'rgb(255, 255, 255)',
+    color = 'rgb(107, 33, 168)',
     children,
-    display = "inline-flex",
+    display = 'inline-flex',
     loading,
     ...rest
-  } = props;
+  } = props
   return (
     <x.button
       display={display}
@@ -65,7 +63,7 @@ function Button(props) {
       )}
       {children}
     </x.button>
-  );
+  )
 }
 
 Button.propTypes = {
@@ -76,7 +74,7 @@ Button.propTypes = {
   display: PropTypes.any,
   loading: PropTypes.bool,
   size: PropTypes.string,
-  variant: PropTypes.string,
-};
+  variant: PropTypes.string
+}
 
-export default Button;
+export default Button
