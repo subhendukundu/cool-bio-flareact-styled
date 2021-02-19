@@ -1,66 +1,65 @@
-import styled, { x } from "@xstyled/styled-components";
+import PropTypes from 'prop-types'
+import React from 'react'
+import { x } from '@xstyled/styled-components'
 import {
-  TopBar,
-  Nav,
   LazyImage,
   Heading,
   Text,
   Button,
-  Footer,
   Seo,
   Link,
-  SocialIcons,
-} from "../components";
-import seoData from "../flareact-seo.config";
+  SocialIcons
+} from '../components'
+import seoData from '../flareact-seo.config'
 
-function dateCheck(from, to) {
+function dateCheck (from, to) {
   if (!from && !to) {
-    return true;
+    return true
   }
-  const fromDate = new Date(from);
-  const toDate = new Date(to);
-  const checkDate = new Date();
+  const fromDate = new Date(from)
+  const toDate = new Date(to)
+  const checkDate = new Date()
 
   if (checkDate <= toDate && checkDate >= fromDate) {
-    return true;
+    return true
   }
-  return false;
+  return false
 }
 
-export async function getEdgeProps({ params, event }) {
-  const { bio } = params;
+export async function getEdgeProps ({ params, event }) {
+  const { bio } = params
   // const post = await getSomeRemotePost({ slug });
-  const data = await cool_bio_profiles.get(bio, "json");
-  console.log("data called", data);
-  console.log("server", bio);
+  const data = await cool_bio_profiles.get(bio, 'json')
+  console.log('data called', data)
+  console.log('server', bio)
   // return event.respondWith(handleRequest());
   if (!data) {
     return {
       redirect: {
-        destination: "https://cool.bio",
-        permanent: false,
-      },
-    };
+        destination: 'https://cool.bio',
+        permanent: false
+      }
+    }
   }
   return {
     props: {
       bio,
       data,
-      event,
-    },
-  };
+      event
+    }
+  }
 }
 
-export default function Post({ bio, data, event }) {
-  console.log("slug slug", bio, data, event);
+export default function Post ({ bio, data, event }) {
+  console.log('slug slug', bio, data, event)
   const {
     name,
     userName,
     socialLinks = [],
-    image: imageSrc = "",
+    image: imageSrc = '',
     appointmentsEnabled = true,
-    links = [],
-  } = data;
+    links = []
+  } = data
   return (
     <x.div display="flex" minHeight="100vh" flexDirection="column">
       <Seo
@@ -80,11 +79,11 @@ export default function Post({ bio, data, event }) {
           src={imageSrc}
           height={{
             md: 40,
-            xs: 28,
+            xs: 28
           }}
           width={{
             md: 40,
-            xs: 28,
+            xs: 28
           }}
           borderRadius="full"
           objectFit="contain"
@@ -93,10 +92,10 @@ export default function Post({ bio, data, event }) {
           <Heading
             as="h1"
             color="rgb(3, 0, 71)"
-            fontSize={{ xs: "3xl", md: "5xl" }}
+            fontSize={{ xs: '3xl', md: '5xl' }}
             my={{
               xs: 2,
-              md: 4,
+              md: 4
             }}
           >
             {name}
@@ -106,22 +105,22 @@ export default function Post({ bio, data, event }) {
           <Heading
             as="h3"
             color="rgb(51, 39, 42)"
-            fontSize={{ xs: "2xl", md: "4xl" }}
+            fontSize={{ xs: '2xl', md: '4xl' }}
           >
             @{userName}
           </Heading>
         )}
         <x.div display="flex" my={{ xs: 2, md: 4 }}>
           {socialLinks.map((item) => {
-            const { id, icon, url, color = "#F87E0F" } = item;
+            const { id, icon, url, color = '#F87E0F' } = item
             if (url) {
               return (
                 <Link key={url} href={url} mr={4}>
                   <SocialIcons icon={icon} color={color} fontSize="40px" />
                 </Link>
-              );
+              )
             }
-            return null;
+            return null
           })}
         </x.div>
         {appointmentsEnabled && (
@@ -131,7 +130,7 @@ export default function Post({ bio, data, event }) {
             mt={6}
             variant="outline"
             color="#fff"
-            fontSize={{ _: "l", xs: "sm", md: "l" }}
+            fontSize={{ _: 'l', xs: 'sm', md: 'l' }}
             fontWeight="500"
             aria-label={`${name} (@${userName}) book appointment`}
             rel="noopener"
@@ -151,14 +150,14 @@ export default function Post({ bio, data, event }) {
           {links.map((item, index) => {
             const {
               id,
-              buttonType = "outline",
+              buttonType = 'outline',
               url,
               title,
-              buttonText = "Click",
+              buttonText = 'Click',
               image,
               startDate,
-              endDate,
-            } = item;
+              endDate
+            } = item
             return (
               dateCheck(startDate, endDate) && (
                 <x.div
@@ -174,30 +173,32 @@ export default function Post({ bio, data, event }) {
                   w="90%"
                 >
                   <x.div display="flex" alignItems="center">
-                    {image ? (
+                    {image
+                      ? (
                       <LazyImage
                         src={image}
                         height={{
                           md: 20,
-                          xs: 14,
+                          xs: 14
                         }}
                         width={{
                           md: 20,
-                          xs: 14,
+                          xs: 14
                         }}
                         mr={3}
                       />
-                    ) : (
+                        )
+                      : (
                       <x.div />
-                    )}
-                    <Heading fontSize={{ xs: "xl", md: "3xl" }}>
+                        )}
+                    <Heading fontSize={{ xs: 'xl', md: '3xl' }}>
                       {title}
                     </Heading>
                   </x.div>
                   <Button
                     as="a"
                     href={url}
-                    fontSize={{ xs: "tiny", md: "l" }}
+                    fontSize={{ xs: 'tiny', md: 'l' }}
                     fontWeight="500"
                     rel="noopener"
                     aria-label={buttonText}
@@ -210,7 +211,7 @@ export default function Post({ bio, data, event }) {
                   </Button>
                 </x.div>
               )
-            );
+            )
           })}
         </x.div>
       </x.div>
@@ -220,5 +221,18 @@ export default function Post({ bio, data, event }) {
         </Link>
       </x.div>
     </x.div>
-  );
+  )
+}
+
+Post.propTypes = {
+  bio: PropTypes.any,
+  data: PropTypes.shape({
+    appointmentsEnabled: PropTypes.bool,
+    image: PropTypes.string,
+    links: PropTypes.array,
+    name: PropTypes.any,
+    socialLinks: PropTypes.array,
+    userName: PropTypes.any
+  }),
+  event: PropTypes.any
 }
