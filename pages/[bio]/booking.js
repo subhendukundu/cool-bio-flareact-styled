@@ -108,7 +108,7 @@ export default function Post ({ bio, data }) {
         </x.div>
         <x.div display="flex" justifyContent="center" w="100%" mb={6}>
           <Link href="/" aria-label="cool.bio logo">
-            <LazyImage w="130px" src="assets/logo.svg" alt="cool.bio's logo" />
+            <LazyImage w="130px" src="/assets/logo.svg" alt="cool.bio's logo" />
           </Link>
         </x.div>
       </x.div>

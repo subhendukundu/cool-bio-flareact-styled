@@ -5,6 +5,7 @@ import { useForm, FormProvider } from 'react-hook-form'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3'
+import firebase from '../lib/firebase'
 
 import {
   Heading,
@@ -14,6 +15,8 @@ import {
   FormInput,
   FormTextarea
 } from './index'
+
+const firestore = firebase.firestore()
 
 dayjs.extend(utc)
 
@@ -58,9 +61,38 @@ export default function BookTimeForm ({
 
   const onSubmit = useCallback(async (formData, e) => {
     if (!executeRecaptcha) {
-      return;
+      return
     }
-    console.log(formData)
+    try {
+      setSubmitting(true)
+      const token = await executeRecaptcha(pageName)
+      const { appointmentDate, appointmentTime, ...rest } = formData
+      const date = dayjs(appointmentDate).format('MM-DD-YYYY')
+      const currentDate = dayjs(`${date} ${appointmentTime.value}`).utc()
+      const utcDate = currentDate.format('MM-DD-YYYY')
+      const utcTime = currentDate.format('HH:mm')
+      console.log({ ...rest, token, date: utcDate, time: utcTime })
+      const data = await firestore
+        .collection('pages')
+        .doc(pageId)
+        .collection('appointments')
+        .add({
+          ...rest,
+          token,
+          date: utcDate,
+          time: utcTime,
+          createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+          contactEmails,
+          pageName,
+          status: 'requested'
+        })
+      e.target.reset()
+      console.log(data.id)
+      setSuccess(true)
+    } catch (e) {
+      console.error(e)
+    }
+    setSubmitting(false)
   }, [])
 
   if (success) {

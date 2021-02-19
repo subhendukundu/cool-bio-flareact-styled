@@ -28,6 +28,7 @@ function Button (props) {
       backgroundColor={backgroundColor}
       textDecoration="none"
       as={as}
+      cursor={loading ? 'wait' : 'pointer'}
       {...rest}
     >
       {loading && (
