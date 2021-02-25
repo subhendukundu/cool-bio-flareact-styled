@@ -10,6 +10,7 @@ function Button (props) {
     children,
     display = 'inline-flex',
     loading,
+    bloop,
     ...rest
   } = props
   return (
@@ -28,7 +29,7 @@ function Button (props) {
       backgroundColor={backgroundColor}
       textDecoration="none"
       as={as}
-      cursor={loading ? 'wait' : 'pointer'}
+      cursor={(!bloop && loading) ? 'wait' : 'pointer'}
       {...rest}
     >
       {loading && (
@@ -70,9 +71,10 @@ function Button (props) {
 Button.propTypes = {
   as: PropTypes.string,
   backgroundColor: PropTypes.string,
+  bloop: PropTypes.bool,
   children: PropTypes.any,
   color: PropTypes.string,
-  display: PropTypes.any,
+  display: PropTypes.string,
   loading: PropTypes.bool,
   size: PropTypes.string,
   variant: PropTypes.string

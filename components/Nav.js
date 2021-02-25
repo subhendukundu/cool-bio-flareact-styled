@@ -1,13 +1,13 @@
-import React from "react";
-import { x } from "@xstyled/styled-components";
+import React from 'react'
+import { x } from '@xstyled/styled-components'
 
-import { Button, Link, Text } from "./index";
+import { Button, Link, Text } from './index'
 
 const Nav = () => {
   return (
     <x.header
       display="flex"
-      px={{ _: "12", md: "6" }}
+      px={{ _: '12', md: '6' }}
       alignItems="center"
       justifyContent="space-between"
     >
@@ -24,7 +24,7 @@ const Nav = () => {
         >
           <Text
             as="span"
-            fontSize={{ _: "l", xs: "sm", md: "l" }}
+            fontSize={{ _: 'l', xs: 'sm', md: 'l' }}
             fontWeight="500"
           >
             Login
@@ -32,17 +32,18 @@ const Nav = () => {
         </Link>
         <Button
           variant="solid"
-          display={{ md: "flex", xs: "none" }}
+          display={{ md: 'flex', xs: 'none' }}
           href="https://app.cool.bio/login"
           as="a"
           target="_newtab"
           aria-label="cool.bio signup"
           rel="noopener"
-					loading
+          loading
+          bloop
         >
           <Text
             as="span"
-            fontSize={{ _: "l", xs: "sm", md: "l" }}
+            fontSize={{ _: 'l', xs: 'sm', md: 'l' }}
             fontWeight="500"
           >
             Signup
@@ -50,9 +51,9 @@ const Nav = () => {
         </Button>
       </x.div>
     </x.header>
-  );
-};
+  )
+}
 
-Nav.propTypes = {};
+Nav.propTypes = {}
 
-export default Nav;
+export default Nav
