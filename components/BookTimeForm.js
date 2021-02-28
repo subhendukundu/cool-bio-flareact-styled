@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import React, { useState, useCallback, lazy } from 'react'
+import React, { useState, useCallback } from 'react'
 import { x } from '@xstyled/styled-components'
 import { useForm, FormProvider } from 'react-hook-form'
 import dayjs from 'dayjs'
@@ -7,14 +7,13 @@ import utc from 'dayjs/plugin/utc'
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3'
 import firebase from '../lib/firebase'
 
-import {
-  Heading,
-  Button,
-  FormCalendar,
-  DateTimePicker,
-  FormInput,
-  FormTextarea
-} from './index'
+import FormCalendar from 'components/FormFields/FormCalendar'
+import FormInput from 'components/FormFields/FormInput'
+import FormTextarea from 'components/FormFields/FormTextarea'
+
+import DateTimePicker from 'components/DateTimePicker'
+import Heading from 'components/Heading'
+import Button from 'components/Button'
 
 const firestore = firebase.firestore()
 

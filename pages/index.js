@@ -1,16 +1,15 @@
 import React from 'react'
 import styled, { x } from '@xstyled/styled-components'
 
-import {
-  TopBar,
-  Nav,
-  LazyImage,
-  Heading,
-  Text,
-  Button,
-  Footer,
-  Seo
-} from '../components'
+import TopBar from 'components/TopBar'
+import Nav from 'components/Nav'
+import LazyImage from 'components/LazyImage'
+import Heading from 'components/Heading'
+import Text from 'components/Text'
+import Button from 'components/Button'
+import Footer from 'components/Footer'
+import Seo from 'components/Seo'
+
 import { landingData } from '../configs/landing'
 import seoData from '../flareact-seo.config'
 
@@ -56,7 +55,11 @@ export default function Home () {
           Be Cool! Earn With cool.bio
         </Heading>
         <x.div m="0 auto" mt={{ md: -4, xs: -3 }} w={{ md: '80%', xs: 'auto' }}>
-          <LazyImage src="assets/hero.svg" alt="cool.bio hero" />
+          <LazyImage
+            height={{ md: '550px', xs: '400px' }}
+            src="assets/hero.svg"
+            alt="cool.bio hero"
+          />
         </x.div>
         <x.div px={{ md: 12, xs: 6 }} m="0 auto">
           {landingData.map((item) => {
@@ -111,7 +114,8 @@ export default function Home () {
                   src={item.img}
                   alt={item.alt}
                   marginBottom="2rem"
-                  width={{ xs: '80%', md: '40%' }}
+                  width={{ xs: '80%', md: '400px' }}
+                  height="auto"
                 />
               </Section>
             )

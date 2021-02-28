@@ -1,4 +1,4 @@
-import styled from "@xstyled/styled-components";
+import styled from '@xstyled/styled-components'
 
 const SSROnly = styled.span`
   position: absolute;
@@ -9,8 +9,8 @@ const SSROnly = styled.span`
   overflow: hidden;
   clip: rect(0px, 0px, 0px, 0px);
   border: 0px;
-`;
+`
 
-SSROnly.propTypes = {};
+SSROnly.propTypes = {}
 
-export default SSROnly;
+export default SSROnly

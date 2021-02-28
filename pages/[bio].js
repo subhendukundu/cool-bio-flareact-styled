@@ -1,16 +1,14 @@
-import PropTypes from 'prop-types'
 import React from 'react'
+import PropTypes from 'prop-types'
 import { x } from '@xstyled/styled-components'
-import {
-  LazyImage,
-  Heading,
-  Text,
-  Button,
-  Seo,
-  Link,
-  SocialIcons
-} from '../components'
-import seoData from '../flareact-seo.config'
+
+import LazyImage from 'components/LazyImage'
+import Heading from 'components/Heading'
+import Text from 'components/Text'
+import Button from 'components/Button'
+import Link from 'components/Link'
+import Seo from 'components/Seo'
+import SocialIcons from 'components/SocialIcons'
 
 function dateCheck (from, to) {
   if (!from && !to) {
@@ -28,12 +26,13 @@ function dateCheck (from, to) {
 
 export async function getEdgeProps ({ params, event }) {
   const { bio } = params
-  // const post = await getSomeRemotePost({ slug });
   const data = await cool_bio_profiles.get(bio, 'json')
   console.log('data called', data)
   console.log('server', bio)
-  // return event.respondWith(handleRequest());
-  if (!data) {
+  const { forwardLink = {} } = data
+  const { url } = forwardLink
+  if (url) {
+    console.log('----->', url)
     return {
       redirect: {
         destination: 'https://cool.bio',
@@ -46,14 +45,15 @@ export async function getEdgeProps ({ params, event }) {
       bio,
       data,
       event
-    }
+    },
+    revalidate: 0
   }
 }
 
 export default function Post ({ bio, data, event }) {
   console.log('slug slug', bio, data, event)
   const {
-    name,
+    displayName,
     userName,
     socialLinks = [],
     image: imageSrc = '',
@@ -63,8 +63,8 @@ export default function Post ({ bio, data, event }) {
   return (
     <x.div display="flex" minHeight="100vh" flexDirection="column">
       <Seo
-        description={`See cool.bio links from ${name} (@${userName})`}
-        title={`${name} (@${userName}) | cool.bio`}
+        description={`See cool.bio links from ${displayName} (@${userName})`}
+        title={`${displayName} (@${userName}) | cool.bio`}
         image={imageSrc}
       />
       <x.div
@@ -88,7 +88,7 @@ export default function Post ({ bio, data, event }) {
           borderRadius="full"
           objectFit="contain"
         />
-        {name && (
+        {displayName && (
           <Heading
             as="h1"
             color="rgb(3, 0, 71)"
@@ -98,7 +98,7 @@ export default function Post ({ bio, data, event }) {
               md: 4
             }}
           >
-            {name}
+            {displayName}
           </Heading>
         )}
         {userName && (
@@ -115,7 +115,7 @@ export default function Post ({ bio, data, event }) {
             const { id, icon, url, color = '#F87E0F' } = item
             if (url) {
               return (
-                <Link key={url} href={url} mr={4}>
+                <Link key={id} href={url} mr={4}>
                   <SocialIcons icon={icon} color={color} fontSize="40px" />
                 </Link>
               )
@@ -132,7 +132,7 @@ export default function Post ({ bio, data, event }) {
             color="#fff"
             fontSize={{ _: 'l', xs: 'sm', md: 'l' }}
             fontWeight="500"
-            aria-label={`${name} (@${userName}) book appointment`}
+            aria-label={`${displayName} (@${userName}) book appointment`}
             rel="noopener"
             borderColor="#F87E0F"
             backgroundColor="#F87E0F"
@@ -228,9 +228,9 @@ Post.propTypes = {
   bio: PropTypes.any,
   data: PropTypes.shape({
     appointmentsEnabled: PropTypes.bool,
+    displayName: PropTypes.string,
     image: PropTypes.string,
     links: PropTypes.array,
-    name: PropTypes.any,
     socialLinks: PropTypes.array,
     userName: PropTypes.any
   }),

@@ -1,17 +1,17 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { x } from "@xstyled/styled-components";
+import React from 'react'
+import PropTypes from 'prop-types'
+import { x } from '@xstyled/styled-components'
 
-function Heading(props) {
+function Heading (props) {
   const {
-    as = "h3",
-    fontSize = "3rem",
-    fontWeight = "normal",
+    as = 'h3',
+    fontSize = '3rem',
+    fontWeight = 'normal',
     lineHeight = 1,
     children,
-    color = "#030047",
+    color = '#030047',
     ...rest
-  } = props;
+  } = props
   return (
     <x.h3
       as={as}
@@ -23,7 +23,7 @@ function Heading(props) {
     >
       {children}
     </x.h3>
-  );
+  )
 }
 
 Heading.propTypes = {
@@ -35,4 +35,4 @@ Heading.propTypes = {
   lineHeight: PropTypes.number
 }
 
-export default Heading;
+export default Heading

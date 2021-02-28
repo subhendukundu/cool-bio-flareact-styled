@@ -1,34 +1,33 @@
-import styled, { x } from "@xstyled/styled-components";
+import React from 'react'
+import styled, { x } from '@xstyled/styled-components'
 
-import { Heading, Link } from "./index";
-import Fb from "../public/assets/fb.svg";
-import Insta from "../public/assets/instagram.svg";
-import Linkedin from "../public/assets/linkedin.svg";
-import Twitter from "../public/assets/twitter.svg";
-import { footerData } from "../configs/landing";
+import Heading from 'components/Heading'
+import Link from 'components/Link'
+
+import { footerData } from '../configs/landing'
 
 const SocialLinks = [
   {
-    icon: <Fb />,
-    link: "https://www.facebook.com/thecoolbio",
-    key: "fb",
+    icon: 'assets/fb.svg',
+    link: 'https://www.facebook.com/thecoolbio',
+    key: 'fb'
   },
   {
-    icon: <Insta />,
-    link: "https://www.instagram.com/thecoolbio",
-    key: "Insta",
+    icon: 'assets/instagram.svg',
+    link: 'https://www.instagram.com/thecoolbio',
+    key: 'Insta'
   },
   {
-    icon: <Linkedin />,
-    link: "https://www.linkedin.com/company/thecoolbio",
-    key: "Linkedin",
+    icon: 'assets/linkedin.svg',
+    link: 'https://www.linkedin.com/company/thecoolbio',
+    key: 'Linkedin'
   },
   {
-    icon: <Twitter />,
-    link: "https://twitter.com/thecoolbio",
-    key: "Twitter",
-  },
-];
+    icon: 'assets/twitter.svg',
+    link: 'https://twitter.com/thecoolbio',
+    key: 'Twitter'
+  }
+]
 
 const Wrapper = styled.footer`
   font-style: normal;
@@ -53,7 +52,7 @@ const Wrapper = styled.footer`
     grid-gap: 10px;
     grid-template-columns: auto auto;
   }
-`;
+`
 
 const Footer = () => {
   return (
@@ -61,7 +60,7 @@ const Footer = () => {
       <Wrapper>
         <x.div
           display="flex"
-          height="150px"
+          h="150px"
           flexDirection="column"
           justifyContent="space-between"
           fontStyle="normal"
@@ -88,7 +87,7 @@ const Footer = () => {
           <x.div display="flex" flexDirection="column" key={item.key}>
             <Heading
               as="h3"
-              fontSize={{ xs: "xl", md: "2xl" }}
+              fontSize={{ xs: 'xl', md: '2xl' }}
               fontWeight="500"
               marginBottom="1.2rem"
             >
@@ -99,9 +98,9 @@ const Footer = () => {
                 <x.li pt={index !== 0 ? 2 : 0} key={category.key}>
                   <Link
                     aria-label={category.label}
-                    href="#"
+                    href={category.href}
                     color="rgb(174, 175, 179)"
-                    fontSize={{ xs: "sm", md: "base" }}
+                    fontSize={{ xs: 'sm', md: 'base' }}
                   >
                     {category.label}
                   </Link>
@@ -126,20 +125,26 @@ const Footer = () => {
               href={link}
               aria-label={key}
             >
-              {icon}
+              <x.img
+                w="30px"
+                h="30px"
+                src={icon}
+                objectFit="contain"
+                alt={`cool.bio's ${key} profile`}
+              />
             </x.div>
-          );
+          )
         })}
       </x.div>
       <hr
         style={{
-          margin: "0",
-          height: "15px",
+          margin: '0',
+          height: '15px'
         }}
-        color={"#F87E0F"}
+        color={'#F87E0F'}
       />
     </x.div>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

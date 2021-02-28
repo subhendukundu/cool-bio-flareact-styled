@@ -4,7 +4,7 @@ import { useFormContext } from 'react-hook-form'
 import { ErrorMessage } from '@hookform/error-message'
 import { x } from '@xstyled/styled-components'
 
-import { FormLabel } from '../index'
+import FormLabel from 'components/FormFields/FormLabel'
 
 function Dropdown ({
   options,

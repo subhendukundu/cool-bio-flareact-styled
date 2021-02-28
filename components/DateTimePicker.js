@@ -1,8 +1,9 @@
-import PropTypes from 'prop-types'
 import React from 'react'
+import PropTypes from 'prop-types'
 import { x } from '@xstyled/styled-components'
 import { getTimeRanges } from '../lib/time'
-import { Dropdown } from './index'
+
+import Dropdown from 'components/FormFields/Dropdown'
 
 const times = getTimeRanges(30, 'en')
 

@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import { useFormContext } from 'react-hook-form'
-import { FormLabel } from '../index'
 import { x } from '@xstyled/styled-components'
 
+import FormLabel from 'components/FormFields/FormLabel'
 export default function FormTextarea ({ label, padding, margin, ...rest }) {
   const { register } = useFormContext()
   const { name } = rest

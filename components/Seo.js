@@ -1,13 +1,14 @@
-import PropTypes from "prop-types";
-import { useRouter } from "flareact/router";
-import Head from "flareact/head";
+import React from 'react'
+import PropTypes from 'prop-types'
+import { useRouter } from 'flareact/router'
+import Head from 'flareact/head'
 
-function absoluteUrl(url) {
-  return url.startsWith("https") ? url : "https://cool.bio" + url;
+function absoluteUrl (url) {
+  return url.startsWith('https') ? url : 'https://cool.bio' + url
 }
 
-export default function Seo({ title, description, image }) {
-  const router = useRouter();
+export default function Seo ({ title, description, image }) {
+  const router = useRouter()
 
   return (
     <>
@@ -40,9 +41,10 @@ export default function Seo({ title, description, image }) {
         <meta property="og:locale" content="en_US" />
         <meta property="og:site_name" content="cool.bio" />
         <link rel="canonical" href={`https://cool.bio${router.asPath}`} />
+        <link rel="shortcut icon" type="image/png" href="https://img.cool.bio/v0/b/coolbio-f04cd.appspot.com/o/favicon.ico?alt=media"></link>
       </Head>
     </>
-  );
+  )
 }
 
 Seo.propTypes = {

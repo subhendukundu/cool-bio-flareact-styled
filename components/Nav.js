@@ -1,7 +1,9 @@
 import React from 'react'
 import { x } from '@xstyled/styled-components'
 
-import { Button, Link, Text } from './index'
+import Text from 'components/Text'
+import Button from 'components/Button'
+import Link from 'components/Link'
 
 const Nav = () => {
   return (

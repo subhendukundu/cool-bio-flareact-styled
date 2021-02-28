@@ -1,11 +1,11 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { x } from "@xstyled/styled-components";
+import React from 'react'
+import PropTypes from 'prop-types'
+import { x } from '@xstyled/styled-components'
 
-function Text({
-  as = "p",
-  fontSize = "1rem",
-  fontWeight = "normal",
+function Text ({
+  as = 'p',
+  fontSize = '1rem',
+  fontWeight = 'normal',
   lineHeight = 1,
   children,
   ...rest
@@ -20,7 +20,7 @@ function Text({
     >
       {children}
     </x.p>
-  );
+  )
 }
 
 Text.propTypes = {
@@ -28,7 +28,7 @@ Text.propTypes = {
   children: PropTypes.any,
   fontSize: PropTypes.string,
   fontWeight: PropTypes.string,
-  lineHeight: PropTypes.number,
-};
+  lineHeight: PropTypes.number
+}
 
-export default Text;
+export default Text

@@ -1,64 +1,66 @@
-import React, { memo, useState, useCallback } from "react";
-import { useDebounce } from "react-use";
-import { x } from "@xstyled/styled-components";
+import React, { memo, useState, useCallback } from 'react'
+import { useDebounce } from 'react-use'
+import { x } from '@xstyled/styled-components'
 
-import { Input, Text, Button } from "./index";
+import Input from 'components/Input'
+import Text from 'components/Text'
+import Button from 'components/Button'
 /* import firebase from "../lib/firebase";
 
 const firestore = firebase.firestore(); */
 
-function UsernameFinder() {
-  const [loading, setLoading] = useState(false);
-  const [touched, setTouched] = useState(false);
-  const [val, setVal] = useState("");
-  const [available, setAvailable] = useState("");
+function UsernameFinder () {
+  const [loading, setLoading] = useState(false)
+  const [touched, setTouched] = useState(false)
+  const [val, setVal] = useState('')
+  const [available, setAvailable] = useState('')
   // const publishedPagesRef = firestore.collection("publishedPages");
 
   const [, cancel] = useDebounce(
     async () => {
-      setLoading(true);
+      setLoading(true)
       if (val) {
         // const pageName = publishedPagesRef.doc(val);
         // const docSnapshot = await pageName.get();
         // const isExists = docSnapshot.exists;
         if (/* isExists */ true) {
-          setLoading(false);
-          setAvailable(false);
+          setLoading(false)
+          setAvailable(false)
         } else {
-          if (typeof onDebouncedValue === "function") {
-            onDebouncedValue(val);
+          if (typeof onDebouncedValue === 'function') {
+            onDebouncedValue(val)
           }
-          setLoading(false);
-          setAvailable(true);
+          setLoading(false)
+          setAvailable(true)
         }
       }
-      setLoading(false);
+      setLoading(false)
     },
     1000,
     [val]
-  );
+  )
 
   const onChange = useCallback((e) => {
-    const { name, value } = e.currentTarget;
-    setLoading(false);
-    setVal(value);
-    setTouched(true);
-  }, []);
+    const { name, value } = e.currentTarget
+    setLoading(false)
+    setVal(value)
+    setTouched(true)
+  }, [])
 
-  function isUserName() {
-    let regEmail = /^(?=.{3,30}$)([a-z0-9_][a-z0-9_]*([.][a-z0-9_]+)*)$/;
+  function isUserName () {
+    const regEmail = /^(?=.{3,30}$)([a-z0-9_][a-z0-9_]*([.][a-z0-9_]+)*)$/
     if (!regEmail.test(val)) {
-      return false;
+      return false
     }
-    return true;
+    return true
   }
 
-  function checkError() {
+  function checkError () {
     if (val) {
       if (!isUserName()) {
-        return true;
+        return true
       } else {
-        return !loading && !available && val;
+        return !loading && !available && val
       }
     }
   }
@@ -66,7 +68,7 @@ function UsernameFinder() {
   return (
     <x.div
       display="flex"
-      flexDirection={{ xs: "column", md: "row"}}
+      flexDirection={{ xs: 'column', md: 'row' }}
       alignItems="center"
       marginTop="3.5rem"
       marginBottom="2rem"
@@ -74,7 +76,7 @@ function UsernameFinder() {
     >
       <Input
         placeholder="coolname"
-        width={{ xs: "100%", md: "350px"}}
+        width={{ xs: '100%', md: '350px' }}
         fontSize="1.5rem"
         fontWeight="500"
         margin="1rem"
@@ -100,8 +102,8 @@ function UsernameFinder() {
       />
       <Button
         variant="solid"
-        ml={{ xs: 0, md: 3}}
-        mt={{ xs: 3, md: 0}}
+        ml={{ xs: 0, md: 3 }}
+        mt={{ xs: 3, md: 0 }}
         as="a"
         href="https://app.cool.bio"
         aria-label="cool.bio signup"
@@ -112,7 +114,7 @@ function UsernameFinder() {
         </Text>
       </Button>
     </x.div>
-  );
+  )
 }
 
-export default memo(UsernameFinder);
+export default memo(UsernameFinder)

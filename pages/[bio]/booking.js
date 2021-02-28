@@ -3,7 +3,11 @@ import React from 'react'
 import { x } from '@xstyled/styled-components'
 import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3'
 
-import { LazyImage, Heading, Seo, Link, BookTimeForm } from '../../components'
+import LazyImage from 'components/LazyImage'
+import Heading from 'components/Heading'
+import BookTimeForm from 'components/BookTimeForm'
+import Link from 'components/Link'
+import Seo from 'components/Seo'
 
 export async function getEdgeProps ({ params, event }) {
   const { bio } = params
@@ -26,13 +30,14 @@ export async function getEdgeProps ({ params, event }) {
       bio,
       data,
       event
-    }
+    },
+    revalidate: 0
   }
 }
 
 export default function Post ({ bio, data }) {
   const {
-    name,
+    displayName,
     userName,
     image: imageSrc = '',
     appointmentsEnabled = true,
@@ -44,11 +49,13 @@ export default function Post ({ bio, data }) {
 
   console.log('slugslug', bio)
   return (
-    <GoogleReCaptchaProvider reCaptchaKey={process.env.FLAREACT_PUBLIC_RECAPTCHA_SITE_KEY}>
+    <GoogleReCaptchaProvider
+      reCaptchaKey={process.env.FLAREACT_PUBLIC_RECAPTCHA_SITE_KEY}
+    >
       <x.div display="flex" minHeight="100vh" flexDirection="column">
         <Seo
-          description={`See cool.bio links from ${name} (@${userName})`}
-          title={`${name} (@${userName}) | cool.bio`}
+          description={`See cool.bio links from ${displayName} (@${userName})`}
+          title={`${displayName} (@${userName}) | cool.bio`}
           image={imageSrc}
         />
         <x.div
@@ -72,7 +79,7 @@ export default function Post ({ bio, data }) {
             borderRadius="full"
             objectFit="contain"
           />
-          {name && (
+          {displayName && (
             <Heading
               as="h1"
               color="rgb(3, 0, 71)"
@@ -82,7 +89,7 @@ export default function Post ({ bio, data }) {
                 md: 4
               }}
             >
-              {name}
+              {displayName}
             </Heading>
           )}
           {userName && (
@@ -121,9 +128,9 @@ Post.propTypes = {
   data: PropTypes.shape({
     appointmentsEnabled: PropTypes.bool,
     contactEmails: PropTypes.array,
+    displayName: PropTypes.any,
     id: PropTypes.any,
     image: PropTypes.string,
-    name: PropTypes.any,
     pageName: PropTypes.any,
     questions: PropTypes.array,
     userName: PropTypes.any
